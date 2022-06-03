@@ -1,3 +1,86 @@
+%%% --------------------------------------------------
+%%% Style: membook
+%%% A book style
+%%% --------------------------------------------------
+
+%% Make the style for Chapters and sections
+   % \makechapterstyle{membook}{
+   %  \setsecheadstyle{\Large\sffamily\bfseries} 
+   %  \setsubsecheadstyle{\normalsize\sffamily\itshape} 
+   %      \setaftersubsubsecskip{-1em}
+   %  \setsubsubsecheadstyle{\small\sffamily\bfseries}
+   %  \renewcommand{\printchaptername}{\sffamily} 
+   %  \renewcommand{\chapternamenum}{\sffamily} 
+   %  \renewcommand{\chapnumfont}{\chaptitlefont\sffamily} 
+   %  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+   %  \renewcommand{\afterchapternum}{} 
+   %  \renewcommand{\printchaptername}{\secheadstyle}
+   %  \renewcommand{\cftchapterfont}{\normalfont} 
+   %  \renewcommand{\cftchapterpagefont}{\normalfont\sffamily} 
+   %  \renewcommand{\cftchapterpresnum}{\sffamily} 
+   %  \renewcommand{\cftchapterleader}{\sffamily} 
+   %  \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+   %  \captiontitlefont{\small}
+   %  %\settocdepth{chapter}
+   %  \maxsecnumdepth{chapter} 
+   %  \setsecnumdepth{chapter}
+
+   %  % reduce skip after section heading
+   %  \setaftersecskip{1.7ex}
+    
+   %  % set name of bibliography to 'references'
+   %  %\renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+
+   %  % % Title flush left
+   %  \pretitle{\par\vskip 3em 
+   %      \begin{flushleft}\LARGE\sffamily\bfseries}
+   %  \posttitle{\end{flushleft}\par\vskip 0.5em}
+   %  \preauthor{\begin{flushleft}\normalsize\sffamily\bigskip}
+   %  \postauthor{\end{flushleft}}
+   %  \predate{\begin{flushleft}\normalsize\sffamily}
+   %  \postdate{\end{flushleft}}
+
+   %  % 'abstract' bigger skip from title
+   %  \addto\captionsamerican{\renewcommand{\abstractname}{}}
+   %  \renewcommand{\abstractname}{}
+   %  \renewcommand{\abstracttextfont}{\normalfont\scriptsize}
+   %  \abstractrunin
+   % }
+
+
+\makechapterstyle{tnf-thesis}{%
+  \chapterstyle{default}
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand*{\chapnumfont}{\chaptitlefont}
+  \settowidth{\chapindent}{\chapnumfont 999}
+  \renewcommand*{\printchaptername}{}
+  \renewcommand*{\chapternamenum}{}
+  \renewcommand*{\printchapternum}{%
+    \noindent\llap{\makebox[\chapindent][l]{\chapnumfont \thechapter}}}
+  \renewcommand*{\afterchapternum}{}
+  \renewcommand{\cftchapterfont}{\normalfont\scshape\MakeLowercase} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftchapterpresnum}{\scshape}
+  
+
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+
+
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\normalsize\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\end{flushleft}}
+
+  }
+
+
 \makechapterstyle{article-4}{
   \setsecheadstyle{\Large\scshape\MakeLowercase} 
   \setsubsecheadstyle{\normalsize\itshape} 
@@ -6,16 +89,17 @@
   \renewcommand{\printchaptername}{} 
   \renewcommand{\chapternamenum}{} 
   \renewcommand{\chapnumfont}{\chaptitlefont} 
-  \renewcommand{\printchapternum}{\chapnumfont \thechapter\space} 
+  \renewcommand{\printchapternum}{} 
   \renewcommand{\afterchapternum}{} 
   \renewcommand{\printchaptername}{\secheadstyle}
-  \renewcommand{\cftchapterfont}{\normalfont} 
+  \renewcommand{\cftchapterfont}{\normalfont\scshape\MakeLowercase} 
   \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
-  \renewcommand{\cftchapterpresnum}{\scshape} 
-  \renewcommand{\cftchapterleader}{} 
-  \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \renewcommand{\cftchapterpresnum}{\scshape}
+  \renewcommand{\chapternumberline}[1]{}% Gobble chapter number in ToC 
+  % \renewcommand{\cftchapterleader}{\hfill} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
   \captiontitlefont{\small}
-  % \settocdepth{chapter}
+  \settocdepth{section}
   \counterwithout{section}{chapter}
   \maxsecnumdepth{chapter} 
   \setsecnumdepth{subsection}
@@ -36,36 +120,122 @@
     \postdate{\end{flushleft}}
 
   % 'abstract' bigger skip from title
-  \addto\captionsamerican{\renewcommand{\abstractname}{Something}}
+  \addto\captionsamerican{\renewcommand{\abstractname}{Abstract:}} % doesn't work. see template.
   \renewcommand{\abstractnamefont}{\normalfont\small\bfseries}
   \renewcommand{\abstracttextfont}{\normalfont\small}
   \abstractrunin
   \setlength{\abstitleskip}{-\absparindent}
+
+   % \renewcommand{\printtoctitle}{\Large\scshape\MakeLowercase}
+}
+
+
+\makechapterstyle{diss}{
+  \setsecheadstyle{\Large\scshape\MakeLowercase} 
+  \setsubsecheadstyle{\normalsize\itshape} 
+  \setaftersubsubsecskip{-1em}
+  \setsubsubsecheadstyle{\small\bfseries}
+  \renewcommand{\printchaptername}{} % this was empty. 
+  \renewcommand{\chapternamenum}{} 
+  \renewcommand{\chapnumfont}{}
+  \renewcommand{\chaptitlefont}{\LARGE\bfseries} 
+  \renewcommand{\printchapternum}{} 
+  \renewcommand{\afterchapternum}{} 
+  % \renewcommand{\printchaptername}{\secheadstyle}
+  \renewcommand{\cftchapterfont}{\normalfont\scshape\MakeLowercase} 
+  \renewcommand{\cftchapterpagefont}{\normalfont\scshape} 
+  \renewcommand{\cftsectionpagefont}{\normalfont\scshape}
+  \renewcommand{\cftchapterpresnum}{\scshape}
+  \renewcommand{\chapternumberline}[1]{}% Gobble chapter number in ToC 
+  % \renewcommand{\cftchapterleader}{\hfill} 
+  % \renewcommand{\cftchapterafterpnum}{\cftparfillskip}
+  \captiontitlefont{\small}
+  \settocdepth{section}
+  \counterwithout{section}{chapter}
+  \maxsecnumdepth{chapter} 
+  \setsecnumdepth{subsection}
+
+  % reduce skip after section heading
+  \setaftersecskip{1.7ex}
+  
+  % set name of bibliography to 'references'
+  % \renewcommand{\bibname}{\mdseries\Large\scshape\MakeLowercase References}
+
+  % % Title flush left and dissertation specific
+  \pretitle{\par\vskip 3em 
+    \begin{flushleft}\LARGE\bfseries}
+    \posttitle{\end{flushleft}\par\vskip 0.5em}
+  \preauthor{\begin{flushleft}\Large\bigskip}
+    \postauthor{\end{flushleft}}
+  \predate{\begin{flushleft}\normalsize}
+    \postdate{\par\vskip9mm Dissertation submitted for the degree of Ph.D. \vskip9mm
+    Department of Political Science \vskip1mm
+    Faculty of Social Sciences \vskip9mm
+    University of Oslo
+
+    \vfill
+
+                  \hfill
+                \large
+                \bfseries
+                2022
+
+    \end{flushleft}}
+
+% no page number on title page
+\aliaspagestyle{title}{empty}
+
+  % 'abstract' bigger skip from title
+  \addto\captionsamerican{\renewcommand{\abstractname}{Abstract:}} % doesn't work. see template.
+  \renewcommand{\abstractnamefont}{\normalfont\small\bfseries}
+  \renewcommand{\abstracttextfont}{\normalfont\small}
+  \abstractrunin
+  \setlength{\abstitleskip}{-\absparindent}
+
+   % \renewcommand{\printtoctitle}{\Large\scshape\MakeLowercase}
 }
 
 
 
-\makepagestyle{kjh}
-%\makeevenfoot{kjh}{\thepage}{}{}
-%\makeoddfoot{kjh}{}{}{\thepage}
-%\makeheadrule{kjh}{\textwidth}{\normalrulethickness}
-\newcommand{\@kjhmarks}{%
-  \let\@mkboth\markboth
-  \def\chaptermark##1{%
-    \markboth{%
-      \ifnum \c@secnumdepth >\m@ne
-        \if@mainmatter
-          \thechapter. \ %
-        \fi
-      \fi
-      ##1}{}}
-  \def\sectionmark##1{%
-    \markright{##1}}
+% \makepagestyle{kjh}
+% %\makeevenfoot{kjh}{\thepage}{}{}
+% %\makeoddfoot{kjh}{}{}{\thepage}
+% %\makeheadrule{kjh}{\textwidth}{\normalrulethickness}
+% \newcommand{\@kjhmarks}{%
+%   \let\@mkboth\markboth
+%   \def\chaptermark##1{%
+%     \markboth{%
+%       \ifnum \c@secnumdepth >\m@ne
+%         \if@mainmatter
+%           \thechapter. \ %
+%         \fi
+%       \fi
+%       ##1}{}}
+%   \def\sectionmark##1{%
+%     \markright{##1}}
+% }
+% \makepsmarks{kjh}{\@kjhmarks}
+% \makepsmarks{kjh}{}
+% \makeevenhead{kjh}{\scshape\thepage}{}{\scshape\MakeLowercase\leftmark}
+% \makeoddhead{kjh}{\scshape\MakeLowercase\rightmark}{}{\scshape\thepage}
+
+\makepagestyle{tnf}
+
+
+\makeevenhead{tnf}{\scshape\thepage}{}{\scshape\MakeLowercase\leftmark}
+\makeoddhead{tnf}{\scshape\MakeLowercase\rightmark}{}{\scshape\thepage}
+
+\makepsmarks{tnf}{%
+   \nouppercaseheads
+   \createmark{chapter}{left}{nonumber}{}{. \space}
+   \createmark{section}{right}{nonumber}{}{}
+   \createplainmark{toc}{both}{\contentsname}
+   \createplainmark{lof}{both}{\listfigurename}
+   \createplainmark{lot}{both}{\listtablename}
+   \createplainmark{bib}{both}{\bibname}
+   \createplainmark{index}{both}{\indexname}
+   \createplainmark{glossary}{both}{\glossaryname}
 }
-\makepsmarks{kjh}{\@kjhmarks}
-\makepsmarks{kjh}{}
-\makeevenhead{kjh}{}{}{\scshape\thepage}
-\makeoddhead{kjh}{}{}{\scshape\thepage}
 
 
 \makechapterstyle{article-3}{
@@ -125,4 +295,38 @@
    \renewcommand{\maketitlehooka}{% 
        \par\noindent\footnotesize \puB} 
 
+
+
+\newcommand{\printcolophon}
+{
+    \thispagestyle{empty}
+    \vspace*{\stretch{3}}
+        \begin{flushleft}
+            \small
+            \textcopyright\space Trym Nohr Fjørtoft, 2022
+            \vskip2\baselineskip
+            \textit{Series of dissertations submitted to the}
+            \par
+            \textit{Faculty of Social Sciences, University of Oslo}
+            \par
+            \vskip2\baselineskip
+            \small
+            All rights reserved.
+            No part of this publication may be
+            \par
+            reproduced or transmitted,
+            in any form or by any means, \par
+            without permission or unless otherwise stated. \par \vskip1em
+            Article 1 is published under a Creative Commons CC BY licence.
+            % \vskip7\baselineskip
+    \end{flushleft}
+    \vspace*{\stretch{1}}
+    \null
+    \newpage
+}
+
+
+
 \endinput
+
+
